@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainTests {
@@ -31,17 +30,24 @@ public class MainTests {
         assertThat(expectedTax, equalTo(taxEmS));
     }
     @Test
-    public void testForNull() {
+    public void testTheBestOption() {
+        int TaxEmS = 2000;
+        int TaxEarn = 1800;
+        int difference = Math.abs(TaxEarn - TaxEmS);
+        int expected = 200;
 
-        assertThrows(NullPointerException.class,()->{
-            throw new NullPointerException();
-        });
+        Assertions.assertEquals(expected, difference);
+
     }
 
     @Test
-    public void testForNullWithHamcrest() {
-        String input = "";
-        assertThat(input, isEmptyOrNullString());
+    public void testTheBestOptionWithHamcrest() {
+        int TaxEmS = 2000;
+        int TaxEarn = 1800;
+        int difference = Math.abs(TaxEarn - TaxEmS);
+        int expected = 200;
+
+        assertThat(difference, equalTo(expected));
     }
 
     @ParameterizedTest
